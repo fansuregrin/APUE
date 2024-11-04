@@ -13,4 +13,17 @@ void err_sys(const char *fmt, ...);
  */
 void pr_exit(int status);
 
+/**
+ * @brief 打印进程的 id
+ * 
+ *  - PID
+ * 
+ *  - PPID
+ * 
+ *  - PGID
+ * 
+ *  - SID
+ */
+void pr_proc_ids();
+
 #endif // MY_TOOL_H
