@@ -2,6 +2,7 @@ ROOT_DIR = ..
 PLATFORM = $(shell ${ROOT_DIR}/systype.sh)
 include ${ROOT_DIR}/${PLATFORM}.defines.mk
 INCLUDE_PATH += -I${ROOT_DIR}/include
+MACRO += -D_GNU_SOURCE
 
 SRC_DIR = ${ROOT_DIR}/mytool
 LIB_DIR = ${ROOT_DIR}/output/lib/release
@@ -30,11 +31,11 @@ ${TARGET_DEBUG}: ${OBJ_FILES_DEBUG}
 
 ${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	if [ ! -d ${OBJ_DIR} ];then ${MKDIR} -p ${OBJ_DIR};fi
-	${CC} $< -o $@ -c ${CFLAGS} ${INCLUDE_PATH} ${LIB_PATH} ${LIB}
+	${CC} $< -o $@ -c ${MACRO} ${CFLAGS} ${INCLUDE_PATH} ${LIB_PATH} ${LIB}
 
 ${OBJ_DIR}/%.debug.o: ${SRC_DIR}/%.c
 	if [ ! -d ${OBJ_DIR} ];then ${MKDIR} -p ${OBJ_DIR};fi
-	${CC} $< -o $@ -c ${CFLAGS} -g ${INCLUDE_PATH} ${LIB_PATH} ${LIB}
+	${CC} $< -o $@ -c ${MACRO} ${CFLAGS} -g ${INCLUDE_PATH} ${LIB_PATH} ${LIB}
 
 clean:
 	${RM} -rf ${TARGET} ${OBJ_FILES}

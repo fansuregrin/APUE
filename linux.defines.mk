@@ -4,6 +4,7 @@ AR = ar
 MKDIR = mkdir
 RM = rm
 CP = cp
+MACRO =
 INCLUDE_PATH =
 LIB_PATH =
 LIB =
