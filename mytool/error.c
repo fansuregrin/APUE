@@ -15,6 +15,13 @@ void err_sys(const char *fmt, ...) {
     exit(EXIT_FAILURE);
 }
 
+void err_ret(const char *fmt, ...) {
+    va_list args;
+    va_start(args, fmt);
+    _err(errno, 1, fmt, args);
+    va_end(args);
+}
+
 static void 
 _err(int errno_, int flag, const char *fmt, va_list args) {
     char buf[BUF_SIZE];
