@@ -3,12 +3,12 @@
 #include <stdio.h>
 #include "mytool.h"
 
-void pr_proc_ids() {
+void pr_proc_ids(const char *prompt) {
 #if defined _GNU_SOURCE
-    printf("pid = %d, ppid = %d, pgid = %d, sid = %d\n",
-        getpid(), getppid(), getpgrp(), getsid(0));
+    printf("%s: pid = %d, ppid = %d, pgid = %d, sid = %d\n",
+        prompt, getpid(), getppid(), getpgrp(), getsid(0));
 #else
-    printf("pid = %d, ppid = %d, pgid = %d\n",
-        getpid(), getppid(), getpgrp());
+    printf("%s: pid = %d, ppid = %d, pgid = %d\n",
+        prompt, getpid(), getppid(), getpgrp());
 #endif
 }

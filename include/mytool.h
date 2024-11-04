@@ -24,6 +24,6 @@ void pr_exit(int status);
  * 
  *  - SID
  */
-void pr_proc_ids();
+void pr_proc_ids(const char *prompt);
 
 #endif // MY_TOOL_H
